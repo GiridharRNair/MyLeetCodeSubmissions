@@ -12,17 +12,16 @@ class Solution:
             if not node:
                 return
 
-            path += str(node.val)
+            path.append(str(node.val))
 
             if not node.right and not node.left:
-                out.append(path)
-                return
-            
+                out.append('->'.join(path))
+            else:
+                search(node.right, path)
+                search(node.left, path)
 
-            search(node.right, path+"->")
-        
-            search(node.left, path+"->")
+            path.pop()
 
-        search(root, "")
+        search(root, [])
         return out
         
