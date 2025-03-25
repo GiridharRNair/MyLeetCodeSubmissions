@@ -1,21 +1,21 @@
 class Solution:
     def checkValidCuts(self, n: int, rectangles: List[List[int]]) -> bool:
-        sort_y = sorted(rectangles, key = lambda rect: rect[1])        
-        sort_x = sorted(rectangles, key = lambda rect: rect[0])
-        return self._check(sort_y, False) or self._check(sort_x, True)
+        return self._check(rectangles, False) or self._check(rectangles, True)
+
     def _check (self, rectangles, vertical: bool):
         last_split_end = 0
         splits = 0
-        if not vertical:
-            for r in rectangles:
-                if r[1] >= last_split_end:
-                    splits += 1
-                
-                last_split_end = max(last_split_end, r[3])
+        if vertical: 
+            idx = 0 
         else:
-            for r in rectangles:
-                if r[0] >= last_split_end:
-                    splits += 1
-                
-                last_split_end = max (last_split_end, r[2])
-        return splits >= 3
+            idx = 1
+        rectangles = sorted(rectangles, key = lambda rect: rect[idx])
+
+        for r in rectangles:
+            if r[idx] >= last_split_end:
+                splits += 1
+            
+            last_split_end = max(last_split_end, r[idx+2])
+            if splits >= 3:
+                return True
+        return False 
