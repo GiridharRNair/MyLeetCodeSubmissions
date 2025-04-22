@@ -5,3 +5,4 @@ class Solution:
             if target - num in seen:
                 return [seen[target - num], idx]
             seen[num] = idx
+            #please work
