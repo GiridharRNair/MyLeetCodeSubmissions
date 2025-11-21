@@ -26,7 +26,7 @@ class Solution:
         dfs(root)
         
         sum_store_keys = list(sum_store.keys())
-        print(sum_store)
+        # print(sum_store)
         max_freq = max(sum_store.values())
         
         res = []
