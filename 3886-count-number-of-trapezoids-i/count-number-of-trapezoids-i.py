@@ -10,7 +10,7 @@ class Solution:
 
         for y_count in y_cord_store.values():
             unique_trapazoids = (y_count * (y_count - 1)) // 2
-            print((y_count * (y_count - 1)) // 3, unique_trapazoids)
+            # print((y_count * (y_count - 1)) // 3, unique_trapazoids)
             res += (unique_trapazoids * total_sum)
             total_sum += unique_trapazoids
         return res % MOD
