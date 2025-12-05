@@ -8,7 +8,7 @@ class Solution:
             prefix_sums[i] = prefix_sums[i - 1] + nums[i]
 
         total_sum = prefix_sums[-1]
-        print(prefix_sums)
+        # print(prefix_sums)
         res = 0
         for i in range(n - 1):
             prefix_sum = prefix_sums[i]
