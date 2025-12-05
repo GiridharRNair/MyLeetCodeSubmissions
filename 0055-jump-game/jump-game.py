@@ -1,21 +1,13 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        memo = {}
+        n = len(nums)
+        target = n - 1
 
-        def dfs(i):
-            if i in memo:
-                return memo[i]
-            if i == len(nums) - 1:
-                return True
-            if nums[i] == 0:
-                return False
+        for i in range(n - 1, -1, -1):
+            jump_length = nums[i]
 
-            end = min(len(nums), i + nums[i] + 1)
-            for j in range(i + 1, end):
-                if dfs(j):
-                    memo[i] = True
-                    return True
-            memo[i] = False
-            return False
-
-        return dfs(0)
+            if (i + jump_length) >= target:
+                print(i, jump_length)
+                target = i
+        print(i)
+        return target == 0
